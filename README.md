@@ -9,11 +9,11 @@ Collects, filters and analyses news to surface Environmental, Social and Governa
 
 <br/>
 
-<a href="https://aeonioo.github.io/conducto/" style="color:#E6B450;"><b>Live Dashboard ↗</b></a>
+<a href="https://aeonioo.github.io/Conducto/" style="color:#E6B450;"><b>Live Dashboard ↗</b></a>
  ·
 <a href="https://www.kaggle.com/datasets/aeonio/esg-final" style="color:#E6B450;"><b>Dataset ↗</b></a>
  ·
-<a href="https://github.com/aeonioo/conducto" style="color:#E6B450;"><b>Source Code ↗</b></a>
+<a href="https://github.com/aeonioo/Conducto" style="color:#E6B450;"><b>Source Code ↗</b></a>
 
 <br/>
 
