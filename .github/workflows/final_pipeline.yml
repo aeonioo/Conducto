@@ -1,0 +1,46 @@
+name: pipeline-score
+on:
+  workflow_run:
+    workflows: ["scrape-news"]
+    types: [completed]
+  workflow_dispatch:
+concurrency:
+  group: pipeline
+  cancel-in-progress: false
+jobs:
+  score:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: "data collection"
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      MODELS_DIR: models
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: "data collection/requirements-pipeline.txt"
+      - run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install -r requirements-pipeline.txt
+      - uses: actions/cache@v4
+        with:
+          path: "data collection/models"
+          key: models-v1
+      - name: Download models
+        run: |
+          python - <<'EOF'
+          import os
+          from pathlib import Path
+          from huggingface_hub import snapshot_download
+          if not Path("models/ModernBERT").exists():
+              snapshot_download("aeooooppppp/esg-models", local_dir="models", token=os.environ["HF_TOKEN"])
+          EOF
+      - run: python pipeline.py
+      - run: python scoreboard.py

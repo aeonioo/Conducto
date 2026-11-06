@@ -1,0 +1,24 @@
+name: cleanup-30d
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.13" }
+      - run: pip install supabase
+      - run: |
+          python -c "
+          import os
+          from datetime import datetime, timedelta, timezone
+          from supabase import create_client
+          sb = create_client(os.environ['SUPABASE_URL'], os.environ['SUPABASE_KEY'])
+          cut = (datetime.now(timezone.utc) - timedelta(days=30)).isoformat()
+          sb.table('articles').delete().lt('created_at', cut).execute()
+          "
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
