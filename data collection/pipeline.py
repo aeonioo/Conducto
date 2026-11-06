@@ -14,7 +14,7 @@ load_dotenv()
 sb = create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_KEY"))
 
 # ---------- config ----------
-BASE = Path(os.getenv("MODELS_DIR", r"D:\Coding\Personal\Learning\GenAI\Projects\esg-jev\data collection\models and encoders"))
+BASE = Path(os.getenv("MODELS_DIR", Path(__file__).resolve().parent / "models and encoders"))
 ESG_DIR, BERT_DIR = BASE / "ESG news ml classifier", BASE / "ModernBERT"
 CONF_MIN = 0.5       # below this, an E/S/G prediction is treated as not ESG
 MAX_CHARS = 1500      # same text format as the labeled dataset

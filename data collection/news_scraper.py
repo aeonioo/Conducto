@@ -44,21 +44,6 @@ def get_with_retry(url, params, tries=4):
             time.sleep(5 * (i + 1))
     return None
 
-# def fetch_gnews(company):
-#     q = urllib.parse.quote(f"{company} when:4h")
-#     feed = feedparser.parse(
-#         f"https://news.google.com/rss/search?q={q}&hl=en-US&gl=US&ceid=US:en")
-#     out = []
-#     for e in feed.entries:
-#         if e.get("published_parsed"):
-#             dt = datetime(*e.published_parsed[:6], tzinfo=timezone.utc)
-#         else:
-#             dt = datetime.now(timezone.utc)
-#         out.append(dict(title=e.title, url=e.link,
-#                         source=e.get("source", {}).get("title"),
-#                         published_at=dt, snippet=None, origin="gnews_rss"))
-#     return out
-
 ESG_TERMS = ["emissions OR climate OR energy OR water",
              "layoffs OR union OR workers OR diversity",
              "privacy OR breach OR safety OR security",
