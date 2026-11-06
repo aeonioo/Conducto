@@ -1,0 +1,7 @@
+supabase
+python-dotenv
+scikit-learn==1.6.1
+joblib
+numpy
+transformers
+huggingface_hub

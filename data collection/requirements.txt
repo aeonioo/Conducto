@@ -1,0 +1,6 @@
+requests
+supabase
+feedparser
+python-dotenv
+trafilatura
+googlenewsdecoder
