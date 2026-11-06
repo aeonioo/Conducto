@@ -1,0 +1,24 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+pyproject.toml
+.python-version
+uv.lock
+
+# Virtual environments
+.venv
+
+# .env file
+.env
+
+# files to ignore
+testing/
+workflows/
+dataset_creation/
+dataset versions/
+models and encoders/
+

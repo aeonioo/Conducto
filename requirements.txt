@@ -1,0 +1,13 @@
+requests
+supabase
+feedparser
+python-dotenv
+trafilatura
+googlenewsdecoder
+supabase
+python-dotenv
+scikit-learn==1.6.1
+joblib
+numpy
+transformers>=4.48
+huggingface_hub
