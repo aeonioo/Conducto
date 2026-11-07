@@ -17,7 +17,7 @@ uv.lock
 
 # files to ignore
 testing/
-# workflows/
+workflows/
 dataset_creation/
 dataset versions/
 models and encoders/
