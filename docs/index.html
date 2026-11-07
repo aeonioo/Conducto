@@ -7,80 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#1a1a1a;   /* page background */
-  --surf:#242424; /* sort pills and row hover */
-  --ink:#f2f2f2;  /* main text */
-  --mute:#9a9a9a; /* secondary text */
-  --line:#333333; /* dividers */
-  --track:#2c2c2c;/* empty bar tracks */
-  --e:#4cc49a;--s:#e8a04a;--g:#8a9bf0;
-  --strong:#6fd9b9;--strong-bg:#1d3a31;--avg:#bdbdbd;--avg-bg:#2e2e2e;--weak:#f09a8a;--weak-bg:#442a2d;
-  --neg:#e57a6a;--neu:#4a4a4a;--pos:#4cc49a;
-  --display:"Bricolage Grotesque",Georgia,serif;--body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  color-scheme:dark;box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
-}
-
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--body)}
-.wrap{max-width:1000px;margin:0 auto;padding:36px 20px 72px}
-.bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
-.brand{font:600 17px var(--display);letter-spacing:-.01em}
-button{font:inherit;color:inherit;cursor:pointer}
-.ghost{background:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;color:var(--mute)}
-.ghost:hover{color:var(--ink);border-color:var(--mute)}
-h1{font:600 clamp(36px,6vw,56px)/1.03 var(--display);letter-spacing:-.025em;margin:0 0 14px;max-width:16ch}
-.lede{margin:0 0 6px;max-width:58ch;color:var(--mute)}
-.status{margin:0 0 34px;font-size:13px;color:var(--mute)}
-.status b{font-weight:600;color:var(--ink)}
-.sorts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
-.sorts button{display:flex;align-items:center;gap:8px;background:var(--surf);border:1px solid var(--line);border-radius:99px;padding:7px 14px;font-size:14px}
-.sorts button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.sorts i{width:9px;height:9px;border-radius:50%;display:block}
-.cols,.head{display:grid;grid-template-columns:minmax(120px,200px) 1fr 150px 14px;gap:20px;align-items:center}
-.cols{font-size:12px;color:var(--mute);padding:0 4px 8px}
-.axis{position:relative;height:16px}
-.axis span{position:absolute;transform:translateX(-50%);white-space:nowrap}
-.axis span:first-child{transform:none}.axis span:last-child{transform:translateX(-100%)}
-.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.row{border-bottom:1px solid var(--line)}
-.head{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:minmax(120px,200px) 1fr 150px 14px;gap:20px;align-items:center;padding:16px 4px;cursor:pointer}
-.head:hover{background:var(--surf)}
-.head:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
-.name{font:600 21px/1.1 var(--display);letter-spacing:-.015em}
-.plot{position:relative;height:30px}
-.plot .mid{position:absolute;left:50%;top:0;bottom:0;border-left:1px dashed var(--line)}
-.plot .rail{position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:var(--track);border-radius:2px}
-.plot .span{position:absolute;top:50%;height:2px;margin-top:-1px;background:var(--mute);opacity:.45}
-.dot{position:absolute;top:50%;width:13px;height:13px;border-radius:50%;margin:-6.5px 0 0 -6.5px;left:50%;border:2px solid var(--bg)}
-.go .dot,.go .span,.go .avg{transition:left .9s cubic-bezier(.2,.7,.2,1),width .9s cubic-bezier(.2,.7,.2,1)}
-.avg{position:absolute;top:2px;bottom:2px;width:2px;margin-left:-1px;background:var(--ink);left:50%}
-.tot{display:flex;align-items:center;justify-content:flex-end;gap:10px}
-.tot b{font:600 30px/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.pill{font-size:12px;font-weight:500;border-radius:99px;padding:3px 10px}
-.Strong{color:var(--strong);background:var(--strong-bg)}.Average{color:var(--avg);background:var(--avg-bg)}.Weak{color:var(--weak);background:var(--weak-bg)}
-.chev{width:8px;height:8px;border-right:1.5px solid var(--mute);border-bottom:1.5px solid var(--mute);transform:rotate(45deg);transition:transform .2s;justify-self:center}
-.head[aria-expanded="true"] .chev{transform:rotate(-135deg)}
-.detail{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:6px 4px 24px}
-.detail[hidden]{display:none}
-.pt{display:flex;align-items:center;gap:8px;font-weight:500}
-.pt i{width:9px;height:9px;border-radius:50%;display:block}
-.pt b{margin-left:auto;font:600 20px var(--display);font-variant-numeric:tabular-nums}
-.split{display:flex;height:8px;gap:2px;margin:10px 0 8px;border-radius:4px;overflow:hidden;background:var(--track)}
-.split i{display:block}
-.pd p{margin:0;font-size:13px;color:var(--mute)}
-.note{margin-top:30px;font-size:13px;color:var(--mute);max-width:64ch}
-@media (max-width:720px){
-  .cols{display:none}
-  .head{grid-template-columns:1fr auto 14px;gap:10px 14px}
-  .plot{grid-column:1/-1;order:5}
-  .detail{grid-template-columns:1fr;gap:18px}
-}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="wrap">
@@ -93,65 +20,6 @@ h1{font:600 clamp(36px,6vw,56px)/1.03 var(--display);letter-spacing:-.025em;marg
   <ol class="list" id="list"></ol>
   <p class="note">This is a news-based signal, not an audit of company performance. Scores move toward 50 when a company has few articles. Click a company to see how its articles split.</p>
 </div>
-<script>
-const CONFIG={SUPABASE_URL:"https://bkmofesvesfrdrikhyet.supabase.co",SUPABASE_ANON_KEY:"sb_publishable_wCniCrnngtvjRLy9yF5-jA_HOzX_9GN"};
-const PIL=[["e","Environment"],["s","Social"],["g","Governance"]];
-const DEMO=[["NVIDIA",55,47,52,64],["Microsoft",61,44,53,71],["Google",57,41,38,88],["Meta",49,36,40,93],["OpenAI",46,43,35,57],["Amazon",52,34,45,80],["Anthropic",58,54,56,39],["Apple",63,52,57,52],["Tesla",44,40,46,67],["IBM",66,58,62,28],["AMD",53,51,55,22],["Oracle",50,47,49,25],["Intel",56,50,48,31],["Baidu",48,45,41,12],["Alibaba",47,42,44,15]];
-const lab=v=>v>=60?"Strong":v<40?"Weak":"Average";
-const mk=(sc,n)=>{const neg=Math.round(n*(100-sc)/160),pos=Math.round(n*sc/160);return{score:sc,n,neg,pos,neu:n-neg-pos}};
-const demo=()=>DEMO.map(([company,e,s,g,n])=>{const a=Math.round(n*.28),b=Math.round(n*.37),o=(e+s+g)/3;return{company,e:mk(e,a),s:mk(s,b),g:mk(g,n-a-b),overall:o,label:lab(o),articles:n}});
-const P=(r,k)=>r[k]||{score:50,n:0,pos:0,neu:0,neg:0};
-const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-let rows=[],sort="overall",isDemo=true,updated=null,note="",first=true;
-
-function sorted(){const k={overall:r=>-r.overall,name:r=>r.company,e:r=>-P(r,"e").score,s:r=>-P(r,"s").score,g:r=>-P(r,"g").score}[sort];
-  return [...rows].sort((a,b)=>k(a)>k(b)?1:k(a)<k(b)?-1:0)}
-
-function renderSorts(){
-  const opts=[["overall","Overall",""],...PIL.map(([k,n])=>[k,n,`var(--${k})`]),["name","Name",""]];
-  document.getElementById("sorts").innerHTML=opts.map(([k,n,c])=>
-    `<button type="button" data-sort="${k}" aria-pressed="${sort===k}">${c?`<i style="background:${c}"></i>`:""}${n}</button>`).join("");
-}
-function renderStatus(){
-  const total=rows.reduce((s,r)=>s+(r.articles||0),0);
-  const d=updated?new Date(updated).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric",timeZone:"Asia/Kolkata"})+" ("+new Date(updated).toLocaleTimeString("en-IN",{hour:"numeric",minute:"2-digit",hour12:true,timeZone:"Asia/Kolkata"})+" IST)":"";
-  document.getElementById("status").innerHTML=(isDemo?`<b>Sample data.</b> ${note||"Add your Supabase details in the script to see live scores."}`:`<b>Live: </b> Updated ${d}.`)+` ${total.toLocaleString()} articles scored in the last 30 days.`;
-}
-function render(){
-  renderSorts();renderStatus();
-  const list=document.getElementById("list");
-  list.className="list"+(first?" go":"");
-  list.innerHTML=sorted().map(r=>{
-    const vals=PIL.map(([k])=>P(r,k).score),lo=Math.min(...vals),hi=Math.max(...vals);
-    const x=v=>first?50:v;
-    const dots=PIL.map(([k,n])=>{const p=P(r,k);return `<i class="dot" data-x="${p.score}" style="background:var(--${k});left:${x(p.score)}%" title="${n}: ${Math.round(p.score)} (${p.n} articles)"></i>`}).join("");
-    const det=PIL.map(([k,n])=>{const p=P(r,k);return `<div class="pd"><div class="pt"><i style="background:var(--${k})"></i>${n}<b>${Math.round(p.score)}</b></div>
-      <div class="split"><i style="flex:${p.neg};background:var(--neg)"></i><i style="flex:${p.neu};background:var(--neu)"></i><i style="flex:${p.pos};background:var(--pos)"></i></div>
-      <p>${p.n?`${p.n} articles: ${p.neg} negative, ${p.neu} neutral, ${p.pos} positive`:"No scored articles yet"}</p></div>`}).join("");
-    return `<li class="row"><button class="head" type="button" aria-expanded="false">
-      <span class="name">${esc(r.company)}</span>
-      <span class="plot"><i class="mid"></i><i class="rail"></i><i class="span" data-l="${lo}" data-w="${hi-lo}" style="left:${first?50:lo}%;width:${first?0:hi-lo}%"></i>${dots}<i class="avg" data-x="${r.overall}" style="left:${x(r.overall)}%" title="Overall ${Math.round(r.overall)}"></i></span>
-      <span class="tot"><b>${Math.round(r.overall)}</b><span class="pill ${r.label}">${r.label}</span></span><i class="chev"></i></button>
-      <div class="detail" hidden>${det}</div></li>`}).join("");
-  if(first){first=false;requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    list.querySelectorAll("[data-x]").forEach(e=>e.style.left=e.dataset.x+"%");
-    list.querySelectorAll(".span").forEach(e=>{e.style.left=e.dataset.l+"%";e.style.width=e.dataset.w+"%"})}))}
-}
-async function load(){
-  const {SUPABASE_URL:u,SUPABASE_ANON_KEY:k}=CONFIG;
-  if(u&&k){try{
-    const r=await fetch(`${u}/rest/v1/company_scores?select=*`,{headers:{apikey:k,Authorization:`Bearer ${k}`}});
-    if(!r.ok)throw new Error(r.status);
-    rows=await r.json();isDemo=false;updated=rows.map(x=>x.updated_at).filter(Boolean).sort().pop();
-  }catch(e){rows=demo();note="Could not reach Supabase, so this is sample data."}}
-  else rows=demo();
-  render();
-}
-document.getElementById("sorts").addEventListener("click",e=>{const b=e.target.closest("[data-sort]");if(b){sort=b.dataset.sort;render()}});
-document.getElementById("list").addEventListener("click",e=>{const h=e.target.closest(".head");if(!h)return;
-  const open=h.getAttribute("aria-expanded")==="true";h.setAttribute("aria-expanded",!open);h.nextElementSibling.hidden=open});
-
-load();
-</script>
+<script src="script.js"></script>
 </body>
 </html>
