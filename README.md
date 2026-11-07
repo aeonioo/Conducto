@@ -39,6 +39,25 @@ NVIDIA · Microsoft · Google · Meta · OpenAI · Amazon · Anthropic · Apple 
 
 Articles are classified and scored based on their ESG aspect, relevance and sentiment to generate rolling 30-day company scores across Environmental, Social and Governance pillars.
 
+## 04 / Why Conducto?
+
+Unlike ESG tools that rely on external LLM APIs for every article, Conducto uses a two-stage, locally run ML pipeline:
+
+- **TF-IDF + Logistic Regression** filters irrelevant news in milliseconds.
+- **Fine-tuned ModernBERT** scores relevant articles for ESG aspect, relevance and sentiment.
+
+### Model Comparison
+
+| Metric | Gemini API | Conducto |
+|---|---:|---:|
+| API calls per article | 1 | **0** |
+| Tokens (10 articles) | ~1,900 | **0** |
+| Latency per article | ~1.0s | **~0.4s** |
+| Agreement with labels | 9/9 | **9/9** |
+| External API dependency | Yes | **No** |
+
+Same results on this small test, with no per-article API costs and approximately **2.5× lower latency**.
+
 ## How it Works
 
 The system runs through three automated workflows, with GitHub Actions handling orchestration and Supabase managing storage.
