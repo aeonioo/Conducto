@@ -1,6 +1,6 @@
-# Conducto
-
 <div align="center">
+
+# Conducto
 
 ### Tracking the ESG signals behind Big Tech.
 
