@@ -39,7 +39,7 @@ NVIDIA · Microsoft · Google · Meta · OpenAI · Amazon · Anthropic · Apple 
 
 Articles are classified and scored based on their ESG aspect, relevance and sentiment to generate rolling 30-day company scores across Environmental, Social and Governance pillars.
 
-## 04 / Why Conducto?
+## Why Conducto?
 
 Unlike ESG tools that rely on external LLM APIs for every article, Conducto uses a two-stage, locally run ML pipeline:
 
