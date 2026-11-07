@@ -43,20 +43,14 @@ Articles are classified and scored based on their ESG aspect, relevance and sent
 
 Unlike ESG tools that rely on external LLM APIs for every article, Conducto uses a two-stage, locally run ML pipeline:
 
-- **TF-IDF + Logistic Regression** filters irrelevant news in milliseconds.
+- **TF-IDF + Logistic Regression** filters irrelevant news *(1.3ms)*
 - **Fine-tuned ModernBERT** scores relevant articles for ESG aspect, relevance and sentiment.
 
-### Model Comparison
+<p align="center">
+  <img src="docs/conducto_vs_llm_wide.svg" width="100%" alt="Conducto vs LLM">
+</p>
 
-| Metric | Gemini API | Conducto |
-|---|---:|---:|
-| API calls per article | 1 | **0** |
-| Tokens (10 articles) | ~1,900 | **0** |
-| Latency per article | ~1.0s | **~0.4s** |
-| Agreement with labels | 9/9 | **9/9** |
-| External API dependency | Yes | **No** |
-
-Same results on this small test, with no per-article API costs and approximately **2.5× lower latency**.
+Both models achieved **9/9 agreement** with the hand-labeled results. Conducto completed inference in approximately **0.4s per article**, compared to **1.0s** for Gemini, around **2.5× faster**, without external LLM API calls.
 
 ## How it Works
 
@@ -86,10 +80,10 @@ flowchart TD
 
 ### Processing Pipeline
 
-1. **Collection** — Google News RSS + NewsData.io, deduplication and article extraction via `trafilatura`.
-2. **ESG Filtering** — TF-IDF + Logistic Regression classifies articles as `E`, `S`, `G` or `NOT_ESG` (confidence ≥ 0.5).
-3. **ModernBERT Scoring** — Predicts ESG aspect, relevance and sentiment.
-4. **Aggregation** — Converts predictions into rolling 30-day company scores.
+1. **Collection**: Google News RSS + NewsData.io, deduplication and article extraction via `trafilatura`.
+2. **ESG Filtering**: TF-IDF + Logistic Regression classifies articles as `E`, `S`, `G` or `NOT_ESG` (confidence ≥ 0.5).
+3. **ModernBERT Scoring**: Predicts ESG aspect, relevance and sentiment.
+4. **Aggregation**: Converts predictions into rolling 30-day company scores.
 
 ## Scoring
 
