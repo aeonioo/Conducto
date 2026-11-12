@@ -145,7 +145,7 @@ Trained model files, encoders, `.env` and dataset CSVs are kept outside the publ
 Python 3.13 · Supabase · Hugging Face token · NewsData.io API key (optional)
 
 ### 1. Database
-Create a Supabase project and run the database schema in its SQL Editor.
+Create a Supabase project and run [`database/schema.sql`](database/schema.sql) in the SQL Editor.
 
 ### 2. Models
 Upload the ESG classifier files and CPU-compatible ModernBERT model to your private Hugging Face repository: `YOUR_USERNAME/esg-models`.
