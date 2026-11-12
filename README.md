@@ -105,7 +105,7 @@ Scores start at a neutral baseline of **50**, with low article volumes weighted 
 | ESG classification | TF-IDF, Logistic Regression |
 | Multi-task scoring | ModernBERT, PyTorch |
 | ML tooling | Scikit-learn, Transformers |
-| Database | Supabase / PostgreSQL |
+| Database | Supabase |
 | Automation | GitHub Actions |
 | Model hosting | Hugging Face Hub |
 | Dashboard | HTML, CSS, JavaScript |
