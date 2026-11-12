@@ -43,7 +43,7 @@ Articles are classified and scored based on their ESG aspect, relevance and sent
 
 Unlike ESG tools that rely on external LLM APIs for every article, Conducto uses a two-stage, locally run ML pipeline:
 
-- **TF-IDF + Logistic Regression** filters irrelevant news *(1.3ms)*
+- **TF-IDF + Logistic Regression** filters irrelevant news *(1.3s)*
 - **Fine-tuned ModernBERT** scores relevant articles for ESG aspect, relevance and sentiment.
 
 <p align="center">
