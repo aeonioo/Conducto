@@ -131,10 +131,16 @@ conducto/
 │   └── requirements-pipeline.txt
 │
 ├── docs/
-│   └── index.html
+│   ├── index.html
+│   ├── script.js
+│   ├── style.css
+│   
 │
-└── dataset/
-    └── labeling and dataset scripts (local)
+├── dataset/
+│  └── dataset.csv
+│
+└── database/
+    └── schema.sql
 ```
 
 Trained model files, encoders, `.env` and dataset CSVs are kept outside the public repository.
@@ -160,7 +166,7 @@ Run the workflows manually from the GitHub Actions; they run automatically tho!
 
 ### 5. Dashboard
 
-Configure `docs/index.html`:
+Configure `docs/script.js`:
 
 ```javascript
 const CONFIG = {
